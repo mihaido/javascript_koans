@@ -94,6 +94,20 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
+    _(products).chain().map(function (x){
+      //
+      // extract just the ingredients array to simplify input
+      return x.ingredients;
+    }).each(function(y){
+      var nLength = y.length;
+      for(var i=0; i<nLength; i+=1){
+        if(y[i] in ingredientCount)
+          ingredientCount[y[i]] += 1;
+        else
+          ingredientCount[y[i]] = 1;
+      }
+    });
+
     expect(ingredientCount['mushrooms']).toBe(2);
   });
 
@@ -109,7 +123,6 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-
 
   });
 
